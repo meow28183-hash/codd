@@ -41,10 +41,17 @@ class SelfUpdater:
         """
         self.logger.info("Starting daily self-improvement...")
         
-        # Ask Gemini for a suggestion
+        # Ask Long Cat AI for a suggestion
         prompt = "Suggest one small but useful new feature or improvement for an AI Developer Telegram Bot. Return ONLY the suggestion as a short sentence."
-        response = self.gemini.model.generate_content(prompt)
-        suggestion = response.text.strip()
+        try:
+            response = self.gemini.client.chat.completions.create(
+                model=self.gemini.model_name,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            suggestion = response.choices[0].message.content.strip()
+        except Exception as e:
+            self.logger.error(f"Failed to get suggestion from Long Cat AI: {e}")
+            return False, str(e)
         
         self.logger.info(f"Gemini suggested: {suggestion}")
         
