@@ -12,9 +12,10 @@ class GeminiClient:
     def __init__(self, api_key: str):
         self.client = OpenAI(
             api_key=api_key,
-            base_url="https://api.longcat.chat/openai"
+            # base_url="https://api.longcat.chat/openai" # Removed non-standard API base_url
+            # The default OpenAI API base_url will be used, which is configured for Gemini in this environment.
         )
-        self.model_name = "LongCat-Flash-Chat"
+        self.model_name = "gpt-4.1-mini" # Using a more capable model available in the environment
         self.logger = logging.getLogger(__name__)
 
     async def generate_project_structure(self, prompt: str) -> Dict[str, Any]:
@@ -53,7 +54,21 @@ class GeminiClient:
                 return json.loads(text)
             except Exception as e2:
                 self.logger.error(f"Fallback also failed: {e2}")
-                return {}
+            return {}
+
+    async def generate_chat_response(self, user_message: str, system_prompt: str) -> str:
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_message}
+                ]
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            self.logger.error(f"Failed to generate chat response: {e}")
+            return "I apologize, but I encountered an error trying to generate a response." 
 
     async def generate_file_content(self, file_path: str, context: str, project_goal: str) -> str:
         prompt = f"""
