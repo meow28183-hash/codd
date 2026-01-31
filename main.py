@@ -4,7 +4,6 @@ import asyncio
 from dotenv import load_dotenv
 from core.bot import AIDevBot
 from modules.self_updater import SelfUpdater
-from core.gemini import GeminiClient
 
 # Configure logging
 logging.basicConfig(
@@ -30,7 +29,7 @@ async def daily_task(updater: SelfUpdater):
         # Wait for 24 hours
         await asyncio.sleep(24 * 3600)
 
-async def run_bot():
+def main():
     load_dotenv()
     
     token = os.getenv("TELEGRAM_TOKEN")
@@ -47,18 +46,14 @@ async def run_bot():
     bot = AIDevBot(token, gemini_key)
     updater = SelfUpdater(bot.gemini)
     
-    # Start the daily improvement task in the background
-    asyncio.create_task(daily_task(updater))
+    # Use the post_init hook to start the background task
+    async def post_init(application):
+        asyncio.create_task(daily_task(updater))
+
+    bot.app.post_init = post_init
     
     # Run the bot
-    # Note: python-telegram-bot's run_polling is blocking, so we use it as the main entry
     bot.run()
-
-def main():
-    try:
-        asyncio.run(run_bot())
-    except KeyboardInterrupt:
-        pass
 
 if __name__ == "__main__":
     main()
