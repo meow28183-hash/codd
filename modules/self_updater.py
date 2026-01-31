@@ -34,3 +34,29 @@ class SelfUpdater:
     def restart_bot(self):
         self.logger.info("Restarting bot...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
+
+    async def daily_self_improvement(self):
+        """
+        Suggests and applies a new feature to the bot itself.
+        """
+        self.logger.info("Starting daily self-improvement...")
+        
+        # Ask Gemini for a suggestion
+        prompt = "Suggest one small but useful new feature or improvement for an AI Developer Telegram Bot. Return ONLY the suggestion as a short sentence."
+        response = self.gemini.model.generate_content(prompt)
+        suggestion = response.text.strip()
+        
+        self.logger.info(f"Gemini suggested: {suggestion}")
+        
+        # For now, we'll target a specific module to improve, e.g., utils/logger.py or adding a new utility
+        # In a more advanced version, Gemini could decide which file to edit.
+        # Let's try to improve the logger or add a new helper.
+        target_file = "utils/logger.py"
+        success, message = await self.update_module(target_file, f"Implement this improvement: {suggestion}")
+        
+        if success:
+            self.logger.info(f"Daily improvement applied: {suggestion}")
+            return True, suggestion
+        else:
+            self.logger.error(f"Daily improvement failed: {message}")
+            return False, message
