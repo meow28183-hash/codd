@@ -7,59 +7,11 @@ See README for more details:
 https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
 
   import google.generativeai as genai
-2026-01-31 09:40:29,017 - core.bot - INFO - Bot is running...
-2026-01-31 09:40:29,018 - root - INFO - Checking for daily self-improvement...
-2026-01-31 09:40:29,018 - modules.self_updater - INFO - Starting daily self-improvement...
-2026-01-31 09:40:29,116 - root - ERROR - Error in daily task: 404 models/gemini-1.5-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/dist-packages/telegram/ext/_application.py", line 1054, in __run
-    loop.run_until_complete(self._bootstrap_initialize(max_retries=bootstrap_retries))
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 626, in run_until_complete
-    self._check_running()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 586, in _check_running
-    raise RuntimeError('This event loop is already running')
-RuntimeError: This event loop is already running
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.11/dist-packages/telegram/ext/_application.py", line 1079, in __run
-    loop.run_until_complete(self.shutdown())
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 626, in run_until_complete
-    self._check_running()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 586, in _check_running
-    raise RuntimeError('This event loop is already running')
-RuntimeError: This event loop is already running
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/ubuntu/telegram_ai_dev_bot/main.py", line 64, in <module>
-    main()
-  File "/home/ubuntu/telegram_ai_dev_bot/main.py", line 59, in main
-    asyncio.run(run_bot())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 188, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/runners.py", line 120, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/home/ubuntu/telegram_ai_dev_bot/main.py", line 55, in run_bot
-    bot.run()
-  File "/home/ubuntu/telegram_ai_dev_bot/core/bot.py", line 49, in run
-    self.app.run_polling()
-  File "/usr/local/lib/python3.11/dist-packages/telegram/ext/_application.py", line 839, in run_polling
-    return self.__run(
-           ^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/dist-packages/telegram/ext/_application.py", line 1084, in __run
-    loop.close()
-  File "/usr/lib/python3.11/asyncio/unix_events.py", line 68, in close
-    super().close()
-  File "/usr/lib/python3.11/asyncio/selector_events.py", line 88, in close
-    raise RuntimeError("Cannot close a running event loop")
-RuntimeError: Cannot close a running event loop
-sys:1: RuntimeWarning: coroutine 'Application.shutdown' was never awaited
-sys:1: RuntimeWarning: coroutine 'Application._bootstrap_initialize' was never awaited
+2026-01-31 09:41:12,444 - core.bot - INFO - Bot is running...
+2026-01-31 09:41:14,429 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8322133843:AAE6LCzIRx_fsqt70wx7njMnLNNGeLt_aRo/getMe "HTTP/1.1 200 OK"
+2026-01-31 09:41:14,430 - root - INFO - Checking for daily self-improvement...
+2026-01-31 09:41:14,430 - modules.self_updater - INFO - Starting daily self-improvement...
+2026-01-31 09:41:14,510 - root - ERROR - Error in daily task: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2026-01-31 09:41:14,912 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8322133843:AAE6LCzIRx_fsqt70wx7njMnLNNGeLt_aRo/deleteWebhook "HTTP/1.1 200 OK"
+2026-01-31 09:41:14,914 - telegram.ext.Application - INFO - Application started
+2026-01-31 09:41:26,805 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8322133843:AAE6LCzIRx_fsqt70wx7njMnLNNGeLt_aRo/getUpdates "HTTP/1.1 200 OK"

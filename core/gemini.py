@@ -7,7 +7,7 @@ from typing import List, Dict, Any
 class GeminiClient:
     def __init__(self, api_key: str):
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
         self.logger = logging.getLogger(__name__)
 
     async def generate_project_structure(self, prompt: str) -> Dict[str, Any]:
