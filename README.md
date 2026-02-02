@@ -1,22 +1,22 @@
-_# Telegram-Triggered Always-On Self-Updating AI Developer + Supervisor Bot
+# Manus AI - The Intelligent Self-Updating Developer
 
-This bot is a complete AI-powered developer that lives in your Telegram. It can generate projects from scratch, fix existing ones, and even update its own code.
+Manus is a state-of-the-art AI-powered developer that lives in your Telegram. It can generate projects from scratch, fix existing ones, and even update its own code to become smarter over time.
 
-## Features
+## 🚀 Features
+- **Manus Intelligence**: Powered by advanced LLMs to provide expert-level coding and architectural advice.
 - **Telegram-triggered**: Starts working immediately upon receiving a project idea.
 - **Background processing**: Continuous generation of multi-file projects.
-- **Gemini API Integration**: Uses Google's Gemini 1.5 Pro for high-quality code generation and analysis.
 - **Self-Update**: Can modify its own modules safely when instructed.
 - **GitHub Integration**: Clone, fix, and push projects to GitHub.
 - **Auto-Fix**: Analyzes errors and applies fixes automatically.
-- **ZIP Delivery**: Sends completed projects as ZIP files via Telegram.
+- **Web Interface**: Includes a health check endpoint for cloud deployment.
 
-## Setup
+## 🛠 Setup
 
 ### 1. Environment Variables
 Create a `.env` file or set the following secrets:
 - `TELEGRAM_TOKEN`: Your bot token from @BotFather.
-- `GEMINI_API_KEY`: Your API key from Google AI Studio.
+- `GEMINI_API_KEY`: Your API key for the LLM provider.
 - `GITHUB_PAT`: (Optional) Personal Access Token for GitHub operations.
 
 ### 2. Installation
@@ -26,16 +26,17 @@ pip install -r requirements.txt
 
 ### 3. Running
 ```bash
-python main.py
+python server.py
 ```
 
-## Deployment
-- **GitHub Actions**: Use the provided workflow in `.github/workflows/bot.yml`.
-- **Always-on**: Can be deployed to Replit or Render for continuous background processing.
+## 🌐 Deployment
+This app is designed to be deployed as a **Web Service** on platforms like **Render**.
+- **Build Command**: `pip install -r requirements.txt`
+- **Start Command**: `python server.py`
+- **Health Check Path**: `/`
 
-## Usage Examples
+## 💡 Usage Examples
 - "Create a Flask blog app with login and posts"
 - "Add search and tag filtering to my project"
 - "How's my project going?" (Status check)
 - "Add logging to yourself" (Self-update)
-_

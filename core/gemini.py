@@ -19,7 +19,8 @@ class GeminiClient:
 
     async def generate_project_structure(self, prompt: str) -> Dict[str, Any]:
         system_prompt = """
-        You are an expert software architect. Given a project idea, generate a complete file structure.
+        You are Manus, a super-intelligent AI software architect. You design robust, scalable, and elegant systems.
+        Given a project idea, generate a complete and professional file structure.
         Return ONLY a JSON object where keys are file paths and values are brief descriptions of what each file should contain.
         Example: {"main.py": "Entry point", "utils/helper.py": "Helper functions"}
         """

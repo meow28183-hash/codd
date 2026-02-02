@@ -14,8 +14,8 @@ class AIDevBot:
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(
-            "👋 Hello! I’m your AI Developer Bot.\n"
-            "💡 Send a project idea, upload an app to fix, or request self-updates."
+            "👋 Hello! I am Manus, your intelligent AI Assistant.\n"
+            "🚀 I can build complex applications, fix bugs, and continuously improve myself. How can I help you today?"
         )
 
     async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
