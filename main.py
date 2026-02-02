@@ -36,7 +36,7 @@ def main():
     gemini_key = os.getenv("GEMINI_API_KEY")
     
     if not token or not gemini_key:
-        logging.error("TELEGRAM_TOKEN and GEMINI_API_KEY must be set in .env file")
+        logging.error(f"Environment check failed: TELEGRAM_TOKEN={'SET' if token else 'MISSING'}, GEMINI_API_KEY={'SET' if gemini_key else 'MISSING'}")
         return
 
     # Ensure data directories exist
