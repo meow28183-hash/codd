@@ -7,10 +7,11 @@ from core.processor import ProjectProcessor
 
 class AIDevBot:
     def __init__(self, token: str, gemini_key: str):
+        self.logger = logging.getLogger(__name__)
+        self.logger.info("Initializing Bot...")
         self.app = ApplicationBuilder().token(token).build()
         self.gemini = GeminiClient(gemini_key)
-        self.processor = None 
-        self.logger = logging.getLogger(__name__)
+        self.processor = None
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(

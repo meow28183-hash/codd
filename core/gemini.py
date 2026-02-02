@@ -12,9 +12,9 @@ class GeminiClient:
     def __init__(self, api_key: str):
         self.client = OpenAI(
             api_key=api_key,
-            base_url="https://api.longcat.chat/openai"
+            base_url="https://api.longcat.chat/v1"
         )
-        self.model_name = "LongCat-Flash-Chat"
+        self.model_name = "longcat-flash"
         self.logger = logging.getLogger(__name__)
 
     async def generate_project_structure(self, prompt: str) -> Dict[str, Any]:

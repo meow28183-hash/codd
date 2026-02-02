@@ -30,14 +30,16 @@ async def daily_task(updater: SelfUpdater):
         await asyncio.sleep(24 * 3600)
 
 def main():
-    load_dotenv()
+    # load_dotenv() # Not needed on Render
     
     token = os.getenv("TELEGRAM_TOKEN")
     gemini_key = os.getenv("GEMINI_API_KEY")
     
     if not token or not gemini_key:
-        logging.error(f"Environment check failed: TELEGRAM_TOKEN={'SET' if token else 'MISSING'}, GEMINI_API_KEY={'SET' if gemini_key else 'MISSING'}")
+        logging.error(f"CRITICAL: Environment variables missing. TELEGRAM_TOKEN={'SET' if token else 'MISSING'}, GEMINI_API_KEY={'SET' if gemini_key else 'MISSING'}")
         return
+    
+    logging.info(f"Starting bot with token starting with: {token[:10]}...")
 
     # Ensure data directories exist
     os.makedirs("data/projects", exist_ok=True)
